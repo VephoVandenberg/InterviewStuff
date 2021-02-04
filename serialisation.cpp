@@ -147,21 +147,14 @@ void List::Deserialize(FILE *file)
 	    node = node->next;	    
 	}
 
-	free(random_indexies);
+	delete random_indexies;
 	fclose(file);
     }
 }
 
-struct point
-{
-    int x, y;
-    point *next;
-};
-
-
 int main(int argc, char **argv)
 {
-/*
+
     List list;
     FILE *file = fopen("simple.bin", "wb");
     
@@ -198,29 +191,6 @@ int main(int argc, char **argv)
     List desirialized;  
     desirialized.Deserialize(file);
     fclose(file);
-*/
-
-    std::string first_string = "Hello";
-    std::string second_string;
-
-    FILE *file = fopen("simple.bin", "wb");
-    fwrite(&first_string, sizeof(char), first_string.length(), file);
-    fclose(file);
-
-    file = fopen("simple.bin", "rb");
-    fread(&second_string, sizeof(char), first_string.length(), file);
-    fclose(file);
-
-    std::cout << second_string << std::endl;
-/*
-    ListNode* node = new ListNode;
-	
-    char* string = (char*)malloc(4);
-    string = "hell";
-
-
-    std::string another_one = std::string("asejflsdkfae");
-    node->data = std::string(string);
-*/
+    
     return 0;
 }
